@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://uaojlgrgadts"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_4eflr"]
+
+[resource]
+script = ExtResource("1_4eflr")
+_price = 100
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 6,
+1: 30,
+2: 90,
+3: 270,
+4: 400,
+5: 550
+})
+_ownerId = -1
+_propertyGroupId = 2
+_position = 6
+_name = "Oriental Avenue"
+_size = 1
+_color = Color(0, 0.737255, 0.890196, 1)

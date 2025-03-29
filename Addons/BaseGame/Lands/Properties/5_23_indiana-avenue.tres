@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bjjh6o3bp3s4u"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_xat3y"]
+
+[resource]
+script = ExtResource("1_xat3y")
+_price = 220
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 18,
+1: 90,
+2: 250,
+3: 700,
+4: 875,
+5: 1050
+})
+_ownerId = -1
+_propertyGroupId = 5
+_position = 23
+_name = ""
+_size = 1
+_color = Color(0.854902, 0.109804, 0.109804, 1)

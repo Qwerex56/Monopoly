@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bfqb14toffguh"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_onb0o"]
+
+[resource]
+script = ExtResource("1_onb0o")
+_price = 120
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 8,
+1: 40,
+2: 100,
+3: 300,
+4: 450,
+5: 550
+})
+_ownerId = -1
+_propertyGroupId = 2
+_position = 9
+_name = "Connecticut Avenue"
+_size = 1
+_color = Color(0, 0.737255, 0.890196, 1)

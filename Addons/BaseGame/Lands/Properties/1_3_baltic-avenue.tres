@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://4k8462vpaw3u"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_mgpil"]
+
+[resource]
+script = ExtResource("1_mgpil")
+_price = 60
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 4,
+1: 20,
+2: 60,
+3: 180,
+4: 320,
+5: 450
+})
+_ownerId = -1
+_propertyGroupId = 1
+_position = 3
+_name = "Baltic Avenue"
+_size = 1
+_color = Color(0.524194, 0.224936, 0, 1)

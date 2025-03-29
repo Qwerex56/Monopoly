@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://djbw7wms10a5w"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_wslsx"]
+
+[resource]
+script = ExtResource("1_wslsx")
+_price = 260
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 22,
+1: 110,
+2: 330,
+3: 800,
+4: 975,
+5: 1150
+})
+_ownerId = -1
+_propertyGroupId = 6
+_position = 27
+_name = "Ventnor Avenue"
+_size = 1
+_color = Color(1, 1, 0.25098, 1)

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cpjdnrianiked"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_jsbw4"]
+
+[resource]
+script = ExtResource("1_jsbw4")
+_price = 140
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 10,
+1: 50,
+2: 150,
+3: 450,
+4: 625,
+5: 750
+})
+_ownerId = -1
+_propertyGroupId = 3
+_position = 13
+_name = "States Avenue"
+_size = 1
+_color = Color(0.858824, 0, 0.498039, 1)

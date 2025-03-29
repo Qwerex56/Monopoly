@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cmr5tmfuetaus"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_ebfg0"]
+
+[resource]
+script = ExtResource("1_ebfg0")
+_price = 320
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 28,
+1: 150,
+2: 450,
+3: 1000,
+4: 1200,
+5: 1400
+})
+_ownerId = -1
+_propertyGroupId = 7
+_position = 34
+_name = "Pennsylvania Avenue"
+_size = 1
+_color = Color(0, 0.582465, 5.77569e-07, 1)

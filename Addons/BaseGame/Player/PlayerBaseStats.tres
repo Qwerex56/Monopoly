@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dlg6cfarr01ce"]
+
+[ext_resource type="Script" uid="uid://6td36vsf8vjo" path="res://ResourcesModels/PlayerStatsResource.cs" id="1_u6qcf"]
+
+[resource]
+script = ExtResource("1_u6qcf")
+_startingMoney = 1500
+_counterColor = Color(0.960784, 0.960784, 0.960784, 1)

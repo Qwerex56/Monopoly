@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ctdxclpdf1itl"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_xjk5u"]
+
+[resource]
+script = ExtResource("1_xjk5u")
+_price = 180
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 14,
+1: 70,
+2: 200,
+3: 550,
+4: 750,
+5: 950
+})
+_ownerId = -1
+_propertyGroupId = 4
+_position = 16
+_name = "St. James Place"
+_size = 1
+_color = Color(1, 0.529412, 0, 1)

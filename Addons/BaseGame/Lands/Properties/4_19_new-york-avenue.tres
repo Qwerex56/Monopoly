@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b7m62kve55bpq"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_jjppt"]
+
+[resource]
+script = ExtResource("1_jjppt")
+_price = 200
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 16,
+1: 80,
+2: 220,
+3: 600,
+4: 800,
+5: 1000
+})
+_ownerId = -1
+_propertyGroupId = 4
+_position = 19
+_name = "New York Avenue"
+_size = 1
+_color = Color(1, 0.529412, 0, 1)

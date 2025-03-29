@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://wr6hyw02x3kw"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_lmxvm"]
+
+[resource]
+script = ExtResource("1_lmxvm")
+_price = 60
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 2,
+1: 10,
+2: 30,
+3: 90,
+4: 160,
+5: 250
+})
+_ownerId = -1
+_propertyGroupId = 1
+_position = 1
+_name = "Mediterranean Avenue"
+_size = 1
+_color = Color(0.524194, 0.224936, 0, 1)

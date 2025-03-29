@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dp1f8en460ua3"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_tbf1h"]
+
+[resource]
+script = ExtResource("1_tbf1h")
+_price = 180
+_houseCount = 0
+_rent = Dictionary[int, int]({
+0: 14,
+1: 70,
+2: 200,
+3: 550,
+4: 750,
+5: 950
+})
+_ownerId = -1
+_propertyGroupId = 4
+_position = 18
+_name = "Tennessee Avenue"
+_size = 1
+_color = Color(1, 0.529412, 0, 1)
