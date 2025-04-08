@@ -14,7 +14,11 @@ public partial class PropertyResource : LandResource {
     public int Price => _price;
     public int HouseCount => _houseCount;
     public Dictionary<int, int> Rent => _rent;
-    public int OwnerId => _ownerId;
+    public int OwnerId {
+        get => _ownerId;
+        set => _ownerId = value;
+    }
+
     public int PropertyGroupId => _propertyGroupId;
 
     public int GetRent() => CollectionExtensions.GetValueOrDefault(_rent, _houseCount, -1);

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dk4c4nvwvx3co"]
+
+[ext_resource type="Script" uid="uid://6u5timehson1" path="res://ResourcesModels/PlayerResource.cs" id="1_s31fh"]
+
+[resource]
+script = ExtResource("1_s31fh")
+_playerId = 0
+_money = 0
+_counterColor = Color(0.960784, 0.960784, 0.960784, 1)

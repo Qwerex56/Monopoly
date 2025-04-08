@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4bcnmnnafp8k"]
+
+[ext_resource type="Script" uid="uid://twhmrcm3n3mm" path="res://Scenes/Player/Player.cs" id="1_a3d8c"]
+[ext_resource type="Texture2D" uid="uid://co7p3wskr2bfy" path="res://icon.svg" id="1_uvnfx"]
+[ext_resource type="Shader" uid="uid://dtw6x0ulfq4bg" path="res://Assets/land_border_shader/land_base.gdshader" id="2_xpcdj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mtuoh"]
+shader = ExtResource("2_xpcdj")
+shader_parameter/border_size = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3d8c"]
+size = Vector2(64, 64)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 0
+motion_mode = 1
+script = ExtResource("1_a3d8c")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mtuoh")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_uvnfx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_a3d8c")

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cl1qgs8ve5p7h"]
+
+[ext_resource type="Texture2D" uid="uid://co7p3wskr2bfy" path="res://icon.svg" id="1_1hbbu"]
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="2_2psnl"]
+
+[resource]
+script = ExtResource("2_2psnl")
+_price = 150
+_houseCount = 0
+_rent = Dictionary[int, int]({})
+_ownerId = -1
+_propertyGroupId = 10
+_position = 28
+_name = "Water Works"
+_size = 1
+_icon = ExtResource("1_1hbbu")
+_color = Color(0, 0, 0, 0)

@@ -17,6 +17,6 @@ _rent = Dictionary[int, int]({
 _ownerId = -1
 _propertyGroupId = 5
 _position = 23
-_name = ""
+_name = "Indiana Avenue"
 _size = 1
 _color = Color(0.854902, 0.109804, 0.109804, 1)

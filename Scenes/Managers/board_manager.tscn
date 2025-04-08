@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5byltxujlqtb"]
+
+[ext_resource type="Script" uid="uid://33n34df67vms" path="res://Scenes/Managers/BoardManager.cs" id="1_sfw1i"]
+[ext_resource type="PackedScene" uid="uid://bcmwyqsnfa2ok" path="res://Scenes/Lands/land_base.tscn" id="2_ipjru"]
+
+[node name="BoardManager" type="Node"]
+script = ExtResource("1_sfw1i")
+_landScene = ExtResource("2_ipjru")

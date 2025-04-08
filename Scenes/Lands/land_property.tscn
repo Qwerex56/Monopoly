@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://b73gicilynjf0"]
+
+[ext_resource type="PackedScene" uid="uid://bcmwyqsnfa2ok" path="res://Scenes/Lands/land_base.tscn" id="1_mbas6"]
+[ext_resource type="Script" uid="uid://b7tnsqyj1ajw1" path="res://Scenes/Lands/LandProperty.cs" id="2_s7j2d"]
+[ext_resource type="Texture2D" uid="uid://co7p3wskr2bfy" path="res://icon.svg" id="3_8shqo"]
+
+[sub_resource type="Gradient" id="Gradient_s7j2d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8shqo"]
+gradient = SubResource("Gradient_s7j2d")
+width = 192
+height = 56
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7j2d"]
+size = Vector2(192, 200)
+
+[node name="LandProperty" node_paths=PackedStringArray("_priceTag", "_ribbon") instance=ExtResource("1_mbas6")]
+script = ExtResource("2_s7j2d")
+_priceTag = NodePath("Price")
+_ribbon = NodePath("LandRibbon")
+
+[node name="LandRibbon" type="Polygon2D" parent="." index="0"]
+use_parent_material = true
+texture = SubResource("GradientTexture2D_8shqo")
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 56, 0, 56)
+
+[node name="Icon" parent="." index="1"]
+texture = ExtResource("3_8shqo")
+
+[node name="Name" parent="." index="2"]
+offset_top = 45.0
+offset_bottom = 101.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Price" type="Label" parent="." index="3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 208.0
+offset_right = 192.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "__price__"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ScanArea" type="Area2D" parent="." index="4"]
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArea" index="0"]
+position = Vector2(96, 156)
+shape = SubResource("RectangleShape2D_s7j2d")
+
+[connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]

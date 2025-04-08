@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://dmiw15ao6cthk"]
+
+[ext_resource type="Script" uid="uid://dfomc6luwpbcv" path="res://ResourcesModels/PropertyResource.cs" id="1_76hmj"]
+
+[resource]
+script = ExtResource("1_76hmj")
+_price = 200
+_houseCount = 0
+_rent = Dictionary[int, int]({})
+_ownerId = -1
+_propertyGroupId = 9
+_position = 25
+_name = "Fenchurch Station"
+_size = 1
+_color = Color(0, 0, 0, 0)

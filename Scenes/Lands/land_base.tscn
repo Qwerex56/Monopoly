@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bcmwyqsnfa2ok"]
+
+[ext_resource type="Shader" uid="uid://dtw6x0ulfq4bg" path="res://Assets/land_border_shader/land_base.gdshader" id="1_7iwg4"]
+[ext_resource type="Script" uid="uid://dt1244khvygy1" path="res://Scenes/Lands/LandBase.cs" id="1_jtdxc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7iwg4"]
+shader = ExtResource("1_7iwg4")
+shader_parameter/border_size = 2.0
+
+[sub_resource type="Gradient" id="Gradient_jtdxc"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b12dg"]
+gradient = SubResource("Gradient_jtdxc")
+width = 192
+height = 256
+fill_to = Vector2(0.625958, 0.598291)
+
+[node name="LandBase" type="Polygon2D" node_paths=PackedStringArray("_icon", "_name")]
+material = SubResource("ShaderMaterial_7iwg4")
+color = Color(0.823529, 0.898039, 0.823529, 1)
+texture = SubResource("GradientTexture2D_b12dg")
+polygon = PackedVector2Array(0, 0, 192, 0, 192, 256, 0, 256)
+script = ExtResource("1_jtdxc")
+_icon = NodePath("Icon")
+_name = NodePath("Name")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(96, 156)
+
+[node name="Name" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 192.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "__name__"
+horizontal_alignment = 1
+vertical_alignment = 1
