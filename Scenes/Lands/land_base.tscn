@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcmwyqsnfa2ok"]
+[gd_scene load_steps=7 format=3 uid="uid://bcmwyqsnfa2ok"]
 
 [ext_resource type="Shader" uid="uid://dtw6x0ulfq4bg" path="res://Assets/land_border_shader/land_base.gdshader" id="1_7iwg4"]
 [ext_resource type="Script" uid="uid://dt1244khvygy1" path="res://Scenes/Lands/LandBase.cs" id="1_jtdxc"]
@@ -15,6 +15,9 @@ gradient = SubResource("Gradient_jtdxc")
 width = 192
 height = 256
 fill_to = Vector2(0.625958, 0.598291)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7iwg4"]
+size = Vector2(192, 200)
 
 [node name="LandBase" type="Polygon2D" node_paths=PackedStringArray("_icon", "_name")]
 material = SubResource("ShaderMaterial_7iwg4")
@@ -43,3 +46,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "__name__"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ScanArea" type="Area2D" parent="."]
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArea"]
+position = Vector2(96, 156)
+shape = SubResource("RectangleShape2D_7iwg4")
+
+[connection signal="body_entered" from="ScanArea" to="." method="OnScanAreaBodyEntered"]
+[connection signal="body_exited" from="ScanArea" to="." method="OnScanAreaBodyExited"]

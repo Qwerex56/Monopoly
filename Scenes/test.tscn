@@ -1,33 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://dlopxe83v1q8k"]
+[gd_scene load_steps=7 format=3 uid="uid://dlopxe83v1q8k"]
 
 [ext_resource type="PackedScene" uid="uid://cch2j642m2s44" path="res://Scenes/Managers/game_manager.tscn" id="1_35xla"]
-[ext_resource type="PackedScene" uid="uid://b73gicilynjf0" path="res://Scenes/Lands/land_property.tscn" id="1_qc4db"]
 [ext_resource type="PackedScene" uid="uid://5uh3btly0d07" path="res://Scenes/Managers/player_manager.tscn" id="2_5wyu1"]
-[ext_resource type="Resource" uid="uid://wr6hyw02x3kw" path="res://Addons/BaseGame/Lands/Properties/1_1_mediterranean-avenue.tres" id="2_ys1qc"]
 [ext_resource type="PackedScene" uid="uid://c5byltxujlqtb" path="res://Scenes/Managers/board_manager.tscn" id="3_0c07c"]
-[ext_resource type="Script" uid="uid://6u5timehson1" path="res://ResourcesModels/PlayerResource.cs" id="3_2cgwh"]
 [ext_resource type="PackedScene" uid="uid://c4bcnmnnafp8k" path="res://Scenes/Player/player.tscn" id="3_35xla"]
-[ext_resource type="Script" uid="uid://ckj3n11cq5ety" path="res://ResourcesModels/LandResource.cs" id="4_0c07c"]
-[ext_resource type="Resource" uid="uid://dk4c4nvwvx3co" path="res://Addons/BaseGame/Player/player_base.tres" id="4_ys1qc"]
+[ext_resource type="Resource" uid="uid://dk4c4nvwvx3co" path="res://Addons/ModdedGame/Player/player_base.tres" id="4_ys1qc"]
+[ext_resource type="PackedScene" uid="uid://d1ptwtbau0svj" path="res://Scenes/Managers/event_manager.tscn" id="8_0c07c"]
 
 [node name="Test" type="Node2D"]
 
-[node name="GameManager" parent="." node_paths=PackedStringArray("_boardManager", "_playerManager") instance=ExtResource("1_35xla")]
+[node name="GameManager" parent="." node_paths=PackedStringArray("_boardManager", "_playerManager", "_eventManager") instance=ExtResource("1_35xla")]
 _boardManager = NodePath("BoardManager")
 _playerManager = NodePath("PlayerManager")
+_eventManager = NodePath("EventManager")
 
 [node name="PlayerManager" parent="GameManager" instance=ExtResource("2_5wyu1")]
-_players = Array[ExtResource("3_2cgwh")]([ExtResource("4_ys1qc")])
 
-[node name="BoardManager" parent="GameManager" instance=ExtResource("3_0c07c")]
-_landResources = Array[ExtResource("4_0c07c")]([ExtResource("2_ys1qc")])
-
-[node name="LandProperty" parent="." instance=ExtResource("1_qc4db")]
-_resource = ExtResource("2_ys1qc")
-
-[node name="Player" parent="." instance=ExtResource("3_35xla")]
-position = Vector2(281, 139)
+[node name="Player" parent="GameManager/PlayerManager" instance=ExtResource("3_35xla")]
+position = Vector2(836, 305)
 _playerResource = ExtResource("4_ys1qc")
 
-[connection signal="PlayerStoppedOnOwnedProperty" from="LandProperty" to="GameManager" method="HandlePlayerStoppedOnOwnedLand"]
-[connection signal="PlayerStoppedOnUnownedProperty" from="LandProperty" to="GameManager" method="HandlePlayerStoppedOnUnownedLand"]
+[node name="BoardManager" parent="GameManager" instance=ExtResource("3_0c07c")]
+
+[node name="EventManager" parent="GameManager" instance=ExtResource("8_0c07c")]

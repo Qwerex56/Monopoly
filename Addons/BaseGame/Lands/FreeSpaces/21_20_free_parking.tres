@@ -7,6 +7,7 @@
 script = ExtResource("2_i5ops")
 _position = 20
 _name = "Free Parking"
+_tags = 1
 _size = 0
 _icon = ExtResource("1_6844o")
 _color = Color(0, 0, 0, 0)

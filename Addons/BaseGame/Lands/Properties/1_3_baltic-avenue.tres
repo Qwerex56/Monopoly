@@ -18,5 +18,6 @@ _ownerId = -1
 _propertyGroupId = 1
 _position = 3
 _name = "Baltic Avenue"
+_tags = 2
 _size = 1
 _color = Color(0.524194, 0.224936, 0, 1)

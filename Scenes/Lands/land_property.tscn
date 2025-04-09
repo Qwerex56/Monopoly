@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b73gicilynjf0"]
+[gd_scene load_steps=6 format=3 uid="uid://b73gicilynjf0"]
 
 [ext_resource type="PackedScene" uid="uid://bcmwyqsnfa2ok" path="res://Scenes/Lands/land_base.tscn" id="1_mbas6"]
 [ext_resource type="Script" uid="uid://b7tnsqyj1ajw1" path="res://Scenes/Lands/LandProperty.cs" id="2_s7j2d"]
@@ -11,9 +11,6 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_s7j2d")
 width = 192
 height = 56
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7j2d"]
-size = Vector2(192, 200)
 
 [node name="LandProperty" node_paths=PackedStringArray("_priceTag", "_ribbon") instance=ExtResource("1_mbas6")]
 script = ExtResource("2_s7j2d")
@@ -49,14 +46,3 @@ text = "__price__"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
-
-[node name="ScanArea" type="Area2D" parent="." index="4"]
-collision_layer = 0
-input_pickable = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArea" index="0"]
-position = Vector2(96, 156)
-shape = SubResource("RectangleShape2D_s7j2d")
-
-[connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]

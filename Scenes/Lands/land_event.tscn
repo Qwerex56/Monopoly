@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://boffq6vwmf6vb"]
+
+[ext_resource type="PackedScene" uid="uid://bcmwyqsnfa2ok" path="res://Scenes/Lands/land_base.tscn" id="1_bofjy"]
+[ext_resource type="Script" uid="uid://bqlopi2myg2m7" path="res://Scenes/Lands/LandEvent.cs" id="2_yv523"]
+
+[node name="LandEvent" instance=ExtResource("1_bofjy")]
+script = ExtResource("2_yv523")

@@ -18,5 +18,6 @@ _ownerId = -1
 _propertyGroupId = 7
 _position = 34
 _name = "Pennsylvania Avenue"
+_tags = 2
 _size = 1
 _color = Color(0, 0.582465, 5.77569e-07, 1)

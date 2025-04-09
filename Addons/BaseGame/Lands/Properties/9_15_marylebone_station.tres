@@ -11,5 +11,6 @@ _ownerId = -1
 _propertyGroupId = 9
 _position = 15
 _name = "Merylebone Station"
+_tags = 2
 _size = 1
 _color = Color(0, 0, 0, 0)

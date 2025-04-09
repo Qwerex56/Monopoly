@@ -1,8 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Godot;
+using Monopoly.Enums;
 using Monopoly.ResourcesModels;
+using Monopoly.Scenes.Autoloads;
 using Monopoly.Scenes.Lands;
 using Monopoly.Tools.BoardGenerator;
 using FileAccess = Godot.FileAccess;
@@ -10,40 +13,89 @@ using FileAccess = Godot.FileAccess;
 namespace Monopoly.Scenes.Managers;
 
 public partial class BoardManager : Node {
-    private const string BasePath = "res://Addons/BaseGame/Lands";
-
     [Export]
     private NodePath? _boardPath;
-
-    [Export]
-    private PackedScene? _landScene;
-
-    [Export]
-    private Node? _gameSettings;
-
-    // [Export]
-    // private List<LandResource> _landResources = [];
 
     [Export]
     private Godot.Collections.Array<LandResource> _landResources = [];
 
     public override void _Ready() {
-        var builder = new BoardBuilder();
+        GameSettings.RequestBaseGameSpecificPath("Lands", out var packPath);
+        var builder = new BoardBuilder(packPath);
 
         foreach (var child in builder.BuildBoardContent()) {
             AddChild(child);
-            child.RequestReady();
+            _landResources.Add(child.Resource);
         }
 
         base._Ready();
     }
 
-    public void HandlePlayerBoughtProperty(int playerId, int landId) {
-        var land = _landResources.First(resource => resource.GetLandId == landId);
+    public LandActionTags GetLandActionTag(int landId) =>
+        _landResources.First(land => land.GetLandId == landId).GetTags;
 
-        if (land is PropertyResource propertyResource) {
-            propertyResource.OwnerId = playerId;
-            GD.Print("Player bought property.");
+    public LandResource GetLandResource(int landId) => _landResources.First(land => land.GetLandId == landId);
+    
+    public bool IsPropertyOwned(int landId) {
+        var landResource = GetLandResource(landId);
+
+        if (landResource is not PropertyResource propertyResource) {
+            // Not a property
+            throw new Exception($"Expected type: {typeof(PropertyResource)}.");
         }
+
+        return propertyResource.OwnerId != -1;
+    }
+
+    public int GetPropertyOwnerId(int landId) {
+        var landResource = GetLandResource(landId);
+
+        if (landResource is not PropertyResource propertyResource) {
+            throw new Exception($"Expected type: {typeof(PropertyResource)}.");
+        }
+        
+        return propertyResource.OwnerId;
+    }
+
+    public int GetPropertyRent(int landId) {
+        var landResource = GetLandResource(landId);
+
+        if (landResource is not PropertyResource propertyResource) {
+            // Not a property
+            throw new Exception($"Expected type: {typeof(PropertyResource)}.");
+        }
+
+        var propertiesInGroup = _landResources.Where(resource => {
+            if (resource is PropertyResource property) {
+                return property.PropertyGroupId == propertyResource.PropertyGroupId;
+            }
+
+            return false;
+        }).ToList();
+
+        var playerHasColorSet = propertiesInGroup.All(resource => {
+            if (resource is not PropertyResource property) return false;
+            return property.OwnerId == propertyResource.OwnerId;
+        });
+
+        var propertyHasHouses = propertyResource.HouseCount > 0;
+        
+        var multiplier = (playerHasColorSet && !propertyHasHouses) ? 2 : 1;
+        
+        return propertyResource.GetRent() * multiplier;
+    }
+
+    public List<LandBase> GetAllLands() {
+        var lands = new List<LandBase>();
+
+        foreach (var child in GetChildren()) {
+            if (child is not LandBase land) {
+                continue;
+            }
+            
+            lands.Add(land);
+        }
+        
+        return lands;
     }
 }

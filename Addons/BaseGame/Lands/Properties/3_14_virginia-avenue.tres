@@ -18,5 +18,6 @@ _ownerId = -1
 _propertyGroupId = 3
 _position = 14
 _name = "Virginia Avenue"
+_tags = 2
 _size = 1
 _color = Color(0.858824, 0, 0.498039, 1)

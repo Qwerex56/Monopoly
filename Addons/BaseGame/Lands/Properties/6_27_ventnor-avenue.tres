@@ -18,5 +18,6 @@ _ownerId = -1
 _propertyGroupId = 6
 _position = 27
 _name = "Ventnor Avenue"
+_tags = 2
 _size = 1
 _color = Color(1, 1, 0.25098, 1)

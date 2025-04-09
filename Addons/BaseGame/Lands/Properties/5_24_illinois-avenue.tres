@@ -18,5 +18,6 @@ _ownerId = -1
 _propertyGroupId = 5
 _position = 24
 _name = "Illinois Avenue"
+_tags = 2
 _size = 1
 _color = Color(0.854902, 0.109804, 0.109804, 1)

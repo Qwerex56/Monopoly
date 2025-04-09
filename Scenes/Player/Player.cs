@@ -12,5 +12,6 @@ public partial class Player : CharacterBody2D {
         set => _playerResource = value;
     }
     
+    public int GetPlayerId => PlayerResource.PlayerId;    
     
 }

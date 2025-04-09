@@ -7,6 +7,7 @@
 script = ExtResource("2_kvcaq")
 _position = 10
 _name = "Jail"
+_tags = 1
 _size = 0
 _icon = ExtResource("1_jycu7")
 _color = Color(0, 0, 0, 0)

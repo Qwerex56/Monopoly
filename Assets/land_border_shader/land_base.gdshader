@@ -12,10 +12,10 @@ void vertex() {
 
 void fragment() {
 	ivec2 tex_size = textureSize(TEXTURE, 0);
-	
+
 	float uv_x_position = UV.x * float(tex_size.x);
 	float uv_y_position = UV.y * float(tex_size.y);
-	
+
 	// Called for every pixel the material is visible on.
 	if (is_outside_range(uv_x_position, border_size, float(tex_size.x) - border_size) ||
 		is_outside_range(uv_y_position, border_size, float(tex_size.y) - border_size)) {

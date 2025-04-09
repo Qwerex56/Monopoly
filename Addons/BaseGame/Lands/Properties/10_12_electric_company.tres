@@ -12,6 +12,7 @@ _ownerId = -1
 _propertyGroupId = 10
 _position = 12
 _name = "Electric Company"
+_tags = 2
 _size = 1
 _icon = ExtResource("1_gjrtr")
 _color = Color(0, 0, 0, 0)

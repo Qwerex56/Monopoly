@@ -1,12 +1,11 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://tnvsc1qw2odt"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://tnvsc1qw2odt"]
 
-[ext_resource type="Texture2D" uid="uid://co7p3wskr2bfy" path="res://icon.svg" id="1_20yfh"]
-[ext_resource type="Script" uid="uid://ckj3n11cq5ety" path="res://ResourcesModels/LandResource.cs" id="2_nbnwv"]
+[ext_resource type="Script" uid="uid://dtb2mb6yesoho" path="res://ResourcesModels/EventLandResource.cs" id="1_r3eoi"]
 
 [resource]
-script = ExtResource("2_nbnwv")
+script = ExtResource("1_r3eoi")
 _position = 30
 _name = "Go To Jail"
+_tags = 4
 _size = 0
-_icon = ExtResource("1_20yfh")
 _color = Color(0, 0, 0, 0)

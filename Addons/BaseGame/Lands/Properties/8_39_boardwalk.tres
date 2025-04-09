@@ -18,5 +18,6 @@ _ownerId = -1
 _propertyGroupId = 8
 _position = 39
 _name = "Boardwalk"
+_tags = 2
 _size = 1
 _color = Color(0.0650133, 0.263606, 1, 1)

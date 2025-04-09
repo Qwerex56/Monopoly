@@ -18,5 +18,6 @@ _ownerId = -1
 _propertyGroupId = 4
 _position = 18
 _name = "Tennessee Avenue"
+_tags = 2
 _size = 1
 _color = Color(1, 0.529412, 0, 1)

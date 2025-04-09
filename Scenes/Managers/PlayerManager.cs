@@ -7,33 +7,51 @@ using Monopoly.ResourcesModels;
 namespace Monopoly.Scenes.Managers;
 
 public partial class PlayerManager : Node {
-    [Export]
-    private Godot.Collections.Array<PlayerResource> _players = [];
+    private List<PlayerResource> _players = [];
 
-    public void HandleRentDue(int payerId, int payeeId, int rentAmount) {
-        // TODO: Add some checks if payer will become a bankrupt
+    public List<PlayerResource> Players => _players;
 
-        var payer = _players.First(player => player.PlayerId == payerId);
-        var payee = _players.First(player => player.PlayerId == payeeId);
-
-        if (payer is null || payee is null) return;
-
-        payer.Money -= rentAmount;
-        payee.Money += rentAmount;
-
-        GD.Print($"Player {payer.PlayerId} has stopped on {payee.PlayerId} and need to pay him {rentAmount}$." +
-                 $" Payer has now {payer.Money}$ and payee has now {payee.Money}$.");
+    public PlayerResource GetPlayer(int playerId) {
+        return _players.First(p => p.PlayerId == playerId);
     }
 
-    public async Task<bool> HandlePlayerPurchaseProperty(int playerId, int price) {
-        // TODO: This await is for simulation purposes, there should be call to UI
-        GD.Print("Player is thinking.");
-        await Task.Delay(2000);
-        GD.Print("Player decided to buy.");
-        
-        var player = _players.First(player => player.PlayerId == playerId);
-        player.Money -= price;
+    public override void _Ready() {
+        foreach (var child in GetChildren()) {
+            if (child is Player.Player player) {
+                _players.Add(player.PlayerResource);
+            }
+        }
 
-        return true;
+        base._Ready();
+    }
+
+    public void PayMoneyToOtherPlayer(int payerId, int payeeId, int amount) {
+        var payer = GetPlayer(payerId);
+        var payee = GetPlayer(payeeId);
+    }
+
+    public void BorrowMoneyFromOtherPlayer(int payerId, int payeeId, int amount) {
+        PayMoneyToOtherPlayer(payeeId, payerId, amount);
+    }
+
+    public void GiveMoneyToAllPlayers(int payerId, int amount) {
+        foreach (var payee in _players.Where(payee => payee.PlayerId != payerId)) {
+            PayMoneyToOtherPlayer(payerId, payee.PlayerId, amount);
+        }
+    }
+
+    public void TakeMoneyFromAllPlayers(int playerId, int amount) {
+    }
+
+    public void TakeMoneyFromPlayer(int payerId, int amount) {
+        GD.Print($"Player: {payerId} pays {amount}$.");
+        var player = GetPlayer(payerId);
+        player.Money -= amount;
+        GD.Print(player.Money);
+    }
+
+    public void GiveMoneyToPlayer(int payeeId, int amount) {
+        var player = GetPlayer(payeeId);
+        player.Money += amount;
     }
 }

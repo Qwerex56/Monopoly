@@ -8,12 +8,12 @@ using Monopoly.Tools.Comparers;
 
 namespace Monopoly.Tools.BoardGenerator;
 
-public class BoardBuilder {
-    private readonly string _contentPath = "res://Addons/BaseGame/Lands/"; //string.Empty;
+public class BoardBuilder(string contentPath) {
     private readonly List<LandBase> _boardContent = [];
 
     private readonly PropertyAddonLoader _propertyAddonLoader = new();
     private readonly LandAddonLoader _landAddonLoader = new();
+    private readonly EventLandAddonLoader _eventAddonLoader = new();
 
     public List<LandBase> BuildBoardContent() {
         LoadContent();
@@ -30,14 +30,17 @@ public class BoardBuilder {
             var height = land.Polygon.Max(point => point.Y);
 
             land.Position = land.Position with { X = x * width, Y = y * height };
-            
+
             if (boardDim * 0 <= i && i < boardDim * 1) {
                 x++;
-            } else if (boardDim * 1 <= i && i < boardDim * 2) {
+            }
+            else if (boardDim * 1 <= i && i < boardDim * 2) {
                 y++;
-            } else if (boardDim * 2 <= i && i < boardDim * 3) {
+            }
+            else if (boardDim * 2 <= i && i < boardDim * 3) {
                 x--;
-            } else if (boardDim * 3 <= i && i < boardDim * 4) {
+            }
+            else if (boardDim * 3 <= i && i < boardDim * 4) {
                 y--;
             }
         }
@@ -46,7 +49,7 @@ public class BoardBuilder {
     }
 
     private void LoadContent() {
-        var dirs = DirAccess.Open(_contentPath).GetDirectories();
+        var dirs = DirAccess.Open(contentPath).GetDirectories();
 
         foreach (var dir in dirs) {
             var contentFiles = GetFiles(dir);
@@ -56,17 +59,22 @@ public class BoardBuilder {
                     _boardContent.Add(_propertyAddonLoader.Load(file));
                 }
                 catch {
-                    _boardContent.Add(_landAddonLoader.Load(file));
+                    try {
+                        _boardContent.Add(_eventAddonLoader.Load(file));
+                    }
+                    catch {
+                        _boardContent.Add(_landAddonLoader.Load(file));
+                    }
                 }
             }
         }
     }
 
     private List<string> GetFiles(string subDir) {
-        var directories = DirAccess.Open(_contentPath + $"{subDir}");
+        var directories = DirAccess.Open(contentPath + $"{subDir}");
         List<string> contentFiles = [];
 
-        contentFiles.AddRange(directories.GetFiles().Select(file => _contentPath + $"{subDir}/{file}"));
+        contentFiles.AddRange(directories.GetFiles().Select(file => contentPath + $"{subDir}/{file}"));
 
         var otherFileIdx = contentFiles.FindIndex(f => !f.EndsWith(".tres"));
         if (otherFileIdx >= 0) contentFiles.RemoveAt(otherFileIdx);
