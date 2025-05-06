@@ -22,8 +22,7 @@ public partial class EventManager : Node {
         base._Ready();
     }
 
-    public void HandleEvent(PlayerResource player, EventLandResource eventLand) {
-        var eventResource = eventLand.EventResource;
+    public void HandleEvent(PlayerResource player, EventResource eventResource) {
 
         foreach (var eventEffect in eventResource.EventEffects) {
             switch (eventEffect.Key) {
@@ -43,12 +42,20 @@ public partial class EventManager : Node {
                     PayForHousesAndHotels(player);
                     break;
                 case EventSpecialEffect.VisitPlace:
+                    VisitPlace(player, eventEffect.Value);
                     break;
                 case EventSpecialEffect.DrawCommunityChest:
+                    var communityChest = DrawCommunityChest();
+                    var eventCard = _eventResources.First(card => card.EventId == communityChest);
+                    HandleEvent(player, eventCard);
                     break;
                 case EventSpecialEffect.DrawChance:
+                    var chanceCard = DrawChanceCard();
+                    var chanceEvent = _eventResources.First(card => card.EventId == chanceCard);
+                    HandleEvent(player, chanceEvent);
                     break;
                 case EventSpecialEffect.GoToJail:
+                    SendPlayerToJail(player, eventEffect.Value);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

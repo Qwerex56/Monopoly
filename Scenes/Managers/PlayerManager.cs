@@ -68,4 +68,9 @@ public partial class PlayerManager : Node {
     public void MovePlayerByThrownValue(int playerId, int thrownValue, bool passAndGoReward = true) {
         
     }
+
+    public int GetPlayerBankAccount(int playerId) {
+        var player = GetPlayer(playerId);
+        return player.Money;
+    }
 }

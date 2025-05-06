@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_s31fh")
 _playerId = 0
-_money = 0
+_money = 1200
 _counterColor = Color(0.960784, 0.960784, 0.960784, 1)

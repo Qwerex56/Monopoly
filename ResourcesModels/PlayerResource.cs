@@ -17,7 +17,7 @@ public partial class PlayerResource : Resource {
     [Export]
     private Color _counterColor = Colors.WhiteSmoke;
 
-    private int _position = 4;
+    private int _position = 3;
 
     private readonly List<PropertyResource> _properties = [];
     private readonly List<PropertyResource> _mortgagedProperties = [];

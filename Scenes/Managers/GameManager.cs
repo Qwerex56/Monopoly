@@ -60,7 +60,7 @@ public partial class GameManager : Node {
         
         if (landResource is not EventLandResource eventLandResource) return;
         
-        _eventManager.HandleEvent(playerResource, eventLandResource);
+        _eventManager.HandleEvent(playerResource, eventLandResource.EventResource);
     }
 
     private void HandlePropertyLand(in int playerId, in int landId) {
@@ -75,7 +75,18 @@ public partial class GameManager : Node {
             _playerManager.PayMoneyToOtherPlayer(playerId, payeeId, rentAmount);
         }
         else {
-            // Handle buy logic
+            var buyAmount = _boardManager.GetPropertyBuyPrice(landId);
+            var playerAccount = _playerManager.GetPlayerBankAccount(playerId);
+            
+            if (playerAccount < buyAmount) {
+                GD.Print($"Not enough money to buy: {landId}. Player has {playerAccount}, needs at least: {buyAmount}");
+                return;
+            }
+            
+            _playerManager.TakeMoneyFromPlayer(playerId, buyAmount);
+
+            var playerResource = _playerManager.GetPlayer(playerId);
+            _boardManager.GivePlayerProperty(playerResource, landId);
         }
     }
 

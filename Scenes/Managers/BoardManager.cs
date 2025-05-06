@@ -35,7 +35,7 @@ public partial class BoardManager : Node {
         _landResources.First(land => land.GetLandId == landId).GetTags;
 
     public LandResource GetLandResource(int landId) => _landResources.First(land => land.GetLandId == landId);
-    
+
     public bool IsPropertyOwned(int landId) {
         var landResource = GetLandResource(landId);
 
@@ -53,7 +53,7 @@ public partial class BoardManager : Node {
         if (landResource is not PropertyResource propertyResource) {
             throw new Exception($"Expected type: {typeof(PropertyResource)}.");
         }
-        
+
         return propertyResource.OwnerId;
     }
 
@@ -79,10 +79,20 @@ public partial class BoardManager : Node {
         });
 
         var propertyHasHouses = propertyResource.HouseCount > 0;
-        
+
         var multiplier = (playerHasColorSet && !propertyHasHouses) ? 2 : 1;
-        
+
         return propertyResource.GetRent() * multiplier;
+    }
+
+    public int GetPropertyBuyPrice(int landId) {
+        var landResource = GetLandResource(landId);
+
+        if (landResource is not PropertyResource propertyResource) {
+            throw new Exception($"Expected type: {typeof(PropertyResource)}.");
+        }
+
+        return propertyResource.Price;
     }
 
     public List<LandBase> GetAllLands() {
@@ -92,10 +102,17 @@ public partial class BoardManager : Node {
             if (child is not LandBase land) {
                 continue;
             }
-            
+
             lands.Add(land);
         }
-        
+
         return lands;
+    }
+
+    public void GivePlayerProperty(PlayerResource player, int landId) {
+        if (GetLandResource(landId) is not PropertyResource land) return;
+        
+        player.Properties.Add(land);
+        land.OwnerId = player.PlayerId;
     }
 }
