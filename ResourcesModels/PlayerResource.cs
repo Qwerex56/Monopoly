@@ -35,4 +35,6 @@ public partial class PlayerResource : Resource {
         get => _position;
         set => _position = value;
     }
+    
+    public List<PropertyResource> Properties => _properties;
 }

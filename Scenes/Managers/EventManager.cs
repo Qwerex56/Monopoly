@@ -40,6 +40,7 @@ public partial class EventManager : Node {
                     TakeMoneyFromAllPlayers(player, eventEffect.Value);
                     break;
                 case EventSpecialEffect.PayForHousesAndHotels:
+                    PayForHousesAndHotels(player);
                     break;
                 case EventSpecialEffect.VisitPlace:
                     break;
@@ -100,5 +101,20 @@ public partial class EventManager : Node {
         _chanceCardEventPool.RemoveAt(0);
         _chanceCardEventPool.Add(chanceCardId);
         return chanceCardId;
+    }
+
+    private void PayForHousesAndHotels(PlayerResource player) {
+        var playerHouseCount = player.Properties.Sum(p => p.HouseCount);
+        TakeMoneyFromPlayer(player, playerHouseCount * 30);
+    }
+
+    private void VisitPlace(PlayerResource player, int newPosition) {
+        var playerManager = _gameManager.GetPlayerManager;
+        playerManager.MovePlayerToPosition(player.PlayerId, newPosition);
+    }
+
+    private void SendPlayerToJail(PlayerResource player, int newPosition) {
+        var playerManager = _gameManager.GetPlayerManager;
+        playerManager.MovePlayerToPosition(player.PlayerId, newPosition, false);
     }
 }

@@ -54,4 +54,18 @@ public partial class PlayerManager : Node {
         var player = GetPlayer(payeeId);
         player.Money += amount;
     }
+
+    public void MovePlayerToPosition(int playerId, int newPosition, bool passAndGoReward = true) {
+        var player = GetPlayer(playerId);
+        
+        if (player.Position < newPosition && passAndGoReward) {
+            GiveMoneyToPlayer(playerId, 200);
+        }
+        
+        player.Position = newPosition;
+    }
+
+    public void MovePlayerByThrownValue(int playerId, int thrownValue, bool passAndGoReward = true) {
+        
+    }
 }
